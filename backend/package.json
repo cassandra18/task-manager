@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "A task managing web application named assort",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "cassandra18"
+  },
+  "keywords": [
+    "task magaement",
+    "organization",
+    "to-do",
+    "productivity",
+    "freelancers",
+    "collaboration",
+    "web application"
+  ],
+  "author": "Cassandra Lelei",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.3",
+    "mysql2": "^3.9.2",
+    "passport": "^0.7.0",
+    "prisma": "^5.10.2",
+    "typescript": "^5.3.3"
+  }
+}
