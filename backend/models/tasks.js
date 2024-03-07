@@ -1,3 +1,5 @@
+const { FOREIGNKEYS } = require("sequelize/types/query-types");
+
 module.exports = (sequelize, DataTypes) => {
     const Task = sequelize.define('Task', {
         title: DataTypes.STRING,
@@ -8,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Task.associate = models => {
-        Task.hasMany(models.Sub)
-    }
-}
+        Task.hasMany(models.Subtask, {as : 'subtask', foreignkey: 'task_id' });
+        Task.belongsToMany(models.Category, { through: 'TaskCategory', foreignkey: 'task_id' });
+        Task.belongsToMany(models.Tag, { through: 'TaskTag', foreignKey: 'task_id' });
+    };
+
+    return Task;
+
+};
