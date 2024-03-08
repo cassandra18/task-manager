@@ -1,5 +1,3 @@
-const { FOREIGNKEYS } = require("sequelize/types/query-types");
-
 module.exports = (sequelize, DataTypes) => {
     const Task = sequelize.define('Task', {
         title: DataTypes.STRING,
