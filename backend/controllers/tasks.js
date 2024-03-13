@@ -26,6 +26,38 @@ const createTask = async (req, res) => {
   }
 };
 
+// Controller function for updating task status
+const updateTaskStatus = async (req, res) => {
+  try {
+    // Extract task ID and new status from the request body
+    const { taskId, status } = req.body;
+
+    // Validate input data (e.g., check if task ID is provided)
+
+    // Find the task by ID
+    const task = await Task.findByPk(taskId);
+
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    // Update task status
+    task.status = status;
+
+    // Save the updated task to the database
+    await task.save();
+
+    // Send the updated task as a response
+    res.json(task);
+  } catch (error) {
+    // Handle errors
+    console.error('Error updating task status:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+
 module.exports = {
-  createTask,
+  createTask,  updateTaskStatus,
 };
